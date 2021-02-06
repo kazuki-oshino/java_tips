@@ -17,31 +17,31 @@ public class Saiki {
         departmentList.add(new Department("005", 3, "003", "課2"));
 
         List<Department> firstHierarchyList = departmentList.stream()
-            .filter(d -> d.getDepartmentLevel() == 1)
-            .collect(Collectors.toCollection(LinkedList::new));
+                .filter(d -> d.getDepartmentLevel() == 1)
+                .collect(Collectors.toCollection(LinkedList::new));
 
         List<Department> hierarchySortedList = new LinkedList<>();
 
-        for (Department department : firstHierarchyList){
-            sortHierarchy(hierarchySortedList, departmentList, department, 1);      
+        for (Department department : firstHierarchyList) {
+            sortHierarchy(hierarchySortedList, departmentList, department, 1);
         }
-         
+
         hierarchySortedList.forEach(System.out::println);
     }
 
     public static void sortHierarchy(
-        List<Department> hierarchySortedList, List<Department> sortedList,
-            Department department, int departmentLevel){
+            List<Department> hierarchySortedList, List<Department> sortedList,
+            Department department, int departmentLevel) {
         hierarchySortedList.add(department);
         int nextDepartmentLevel = departmentLevel + 1;
         List<Department> nextHierarchyList = sortedList.stream()
-            .filter(d -> d.getDepartmentLevel() == nextDepartmentLevel)
-            .filter(d -> d.getHigherHierarchyDepartmentCd().equals(department.getDepartmentCd()))
-            .sorted(Comparator.comparing(Department::getDepartmentCd))
-            .collect(Collectors.toCollection(LinkedList::new));
+                .filter(d -> d.getDepartmentLevel() == nextDepartmentLevel)
+                .filter(d -> d.getHigherHierarchyDepartmentCd().equals(department.getDepartmentCd()))
+                .sorted(Comparator.comparing(Department::getDepartmentCd))
+                .collect(Collectors.toCollection(LinkedList::new));
         if (nextHierarchyList.size() != 0) {
-            for (Department nextDepartment : nextHierarchyList){
-                sortHierarchy(hierarchySortedList, sortedList, nextDepartment, nextDepartmentLevel);      
+            for (Department nextDepartment : nextHierarchyList) {
+                sortHierarchy(hierarchySortedList, sortedList, nextDepartment, nextDepartmentLevel);
             }
         }
     }
@@ -54,9 +54,11 @@ class Department {
         this.departmentLevel = dl;
         this.higherHierarchyDepartmentCd = hd;
         this.departmentName = dn;
-    };
+    }
 
-    private String departmentCd;    
+    ;
+
+    private String departmentCd;
     private int departmentLevel;
     private String higherHierarchyDepartmentCd;
     private String departmentName;
@@ -79,7 +81,8 @@ class Department {
 
     @Override
     public String toString() {
-        return String.format("組織コード:%s 組織階層:%d 上位組織コード:%s 組織名:%s", this.departmentCd, this.departmentLevel, this.higherHierarchyDepartmentCd, this.departmentName);
+        return String.format("組織コード:%s 組織階層:%d 上位組織コード:%s 組織名:%s",
+                this.departmentCd, this.departmentLevel, this.higherHierarchyDepartmentCd, this.departmentName);
     }
 
 }
