@@ -1,1 +1,12 @@
 ./out
+*.class
+/.idea/.gitignore
+/out/production/java_project/.idea/.gitignore
+/out/production/java_project/java_project.iml
+/java_project.iml
+/.idea/misc.xml
+/out/production/java_project/.idea/misc.xml
+/.idea/modules.xml
+/out/production/java_project/.idea/modules.xml
+/.idea/vcs.xml
+/out/production/java_project/.idea/vcs.xml
